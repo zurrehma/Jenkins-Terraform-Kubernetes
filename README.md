@@ -65,23 +65,23 @@ To initialize the backend first, use the below command in the demo root director
 cd demo
 terragrunt init
 ```
-To deploy VPC:
+***To deploy VPC:***  
 ```
 cd demo/vpc
 terragrunt apply
 ```
-To deploy EKS Cluster:
+***To deploy EKS Cluster:***  
 ```
 cd demo/eks
 terragrunt apply
 ```
-To deploy Jenkins resources:  
+***To deploy Jenkins resources:***    
 The default admin user and password can be changed inside ***demo/common_vars.yaml*** file.
 ```
 cd demo/jenkins
 terragrunt apply
 ```
-***To connect with EKS cluster:*** 
+***To connect with EKS cluster:***  
 Use the below command to access eks cluster.
 ```
 aws eks update-kubeconfig --region us-east-1 --name eks-cluster
