@@ -81,7 +81,12 @@ The default admin user and password can be changed inside ***demo/common_vars.ya
 cd demo/jenkins
 terragrunt apply
 ```
-***To connect with EKS cluster:***  
+***To connect with EKS cluster:*** 
+Use the below command to access eks cluster.
+```
+aws eks update-kubeconfig --region us-east-1 --name eks-cluster
+```
+
 Access Jenkins using the load balancer DNS name and port 8080, the DNS name can be obtained using the below command or by visiting AWS console. Wait for some time if the URL is not accessible, the health check initialization takes some time.
 ```
 kubectl get svc -n jenkins
