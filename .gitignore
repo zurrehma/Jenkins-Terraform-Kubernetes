@@ -16,4 +16,5 @@
 *.terraform.lock.hcl.*
 
 
-*backend.tf
+*backend.tf*
+**/backend.tf/*
