@@ -37,7 +37,7 @@ The demo directory contains the terragrunt files which will be used to create th
 | eks | contains terragrunt file to create eks resources |
 | jenkins | contains terragrunt file to create Jenkins resources |
 
-## Task: Set up a Jenkins master and worker configuration on a Kubernetes cluster of your choice. - [x]
+## Task: Set up a Jenkins master and worker configuration on a Kubernetes cluster of your choice. 
 
 - [x] All configuration needs to be done with Terraform 
 - [x] The deployment needs to be fully automated 
@@ -75,13 +75,13 @@ To deploy EKS Cluster:
 cd demo/eks
 terragrunt apply
 ```
-To deploy Jenkins resources:
+To deploy Jenkins resources:  
 The default admin user and password can be changed inside ***demo/common_vars.yaml*** file.
 ```
-cd demo/vpc
+cd demo/jenkins
 terragrunt apply
 ```
-***To connect with EKS cluster:***
+***To connect with EKS cluster:***  
 Access Jenkins using the load balancer DNS name and port 8080, the DNS name can be obtained using the below command or by visiting AWS console. Wait for some time if the URL is not accessible, the health check initialization takes some time.
 ```
 kubectl get svc -n jenkins
@@ -89,11 +89,14 @@ kubectl get svc -n jenkins
 The Jenkins username and password can be obtained from ***demo/common_vars.yaml*** file.
 
 
-## Task: Create a job and build it using this infrastructure. - [x]
+## Task: Create a job and build it using this infrastructure. 
 I have created a [jenkins-cicd-example](https://github.com/zurrehma/jenkins-cicd-example) repository on my GitHub account. It contains a basic ***Go*** app. The code and deployment files are compiled from different sources.
 
-#### Deployment Commands:
-* Clone the source repo and cd into it. Apply the ***docker-in-docker.yaml*** file to create a docker container used for building docker images.
+> **Note**
+> The below ***Steps to deploy complete ci/cd job*** steps deploy full ci/cd pipeline. The repo clone  and integrating docker hub part is optional, if just testing of jenkins worker execution is intended, follow [Steps to check only worker execution:](#steps-to-check-only-worker-execution) steps.
+
+#### Steps to deploy complete ci/cd job:
+* Clone the source repo and ***cd*** into it. Apply the ***docker-in-docker.yaml*** file to create a docker container used for building docker images.
 ```
 kubectl apply -f ./setup/docker-in-docker.yaml
 ```
@@ -101,9 +104,9 @@ kubectl apply -f ./setup/docker-in-docker.yaml
   * Username will be the docker hub username.
   * Password will be the docker hub password or token.
 
-Create a repository with the name **jenkins-cicd-example** in docker hub, otherwise, change this variable ***def REPO_NAME = '<your-repo-name>'*** in Jenkinsfile to use a different name.
+* Create a repository with the name **jenkins-cicd-example** in docker hub, otherwise, change this variable ***def REPO_NAME = your-repo-name*** in Jenkinsfile to use a different name.
 
-* hange the owner variable ***def OWNER = '<your-user-name>'*** in Jenkinsfile to your docker hub user name.
+* Change the owner variable ***def OWNER = your-user-name*** in Jenkinsfile to your docker hub user name.
 
 * push the changes to GitHub repository.
 
@@ -118,12 +121,8 @@ Once Successful, copy the pushed image tag and update the ***docker-compose.yaml
 sudo docker compose up
 ```
 
-
-
-> **Note**
-> The above repo clone  and integrating docker hub part is optional to test the full CI/CD process, if just testing of jenkins worker execution is intended, same repo can be used as an git SCM with ***jenkins/Jenkinsfile*** as a path to Jenkinsfile. This will just build the docker image from same repo.
-
-#### Steps to check only worker execution
+#### Steps to check only worker execution:  
+Same GitHub repo can be used as a git SCM with ***jenkins/Jenkinsfile*** as a path to Jenkinsfile. This will just build the docker image from the same repo.
 * Apply the ***docker-in-docker.yaml*** file from the repo to create a docker container used for building docker images. It can be copied from the [jenkins-cicd-example](https://github.com/zurrehma/jenkins-cicd-example) repo. The file is located in the setup directory.
 ```
 kubectl apply -f docker-in-docker.yaml
