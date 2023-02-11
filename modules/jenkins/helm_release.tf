@@ -58,10 +58,6 @@ resource "helm_release" "jenkins" {
     value = var.jenkins_admin_password
   }
 
-  set {
-    name  = "controller.nodePort"
-    value = var.controller_nodeport
-  }
 }
 
 resource "kubernetes_namespace" "jenkins" {

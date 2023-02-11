@@ -20,10 +20,6 @@ variable "namespace_name" {
   default = "jenkins"
 }
 
-variable "controller_nodeport" {
-  type = number
-}
-
 # ------------------------------------------------------------
 # Jenkins Settings
 # ------------------------------------------------------------

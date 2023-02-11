@@ -1,10 +1,24 @@
 locals {
+  # aws account name e.g prod-jenkins
   aws_account       = "demo-jenkins"
-  cluster_name = "jenkins-cluster"
+  # eks related variables
+  eks_cluster_name = "eks-cluster"
+  eks_cluster_version = "1.22"
+  eks_autoscaling_group_min_size = 1
+  eks_autoscaling_group_desired_capacity = 1
+  eks_autoscaling_group_max_size = 1
+  eks_worker_group_instance_type = ["t2.medium"]
+  eks_worker_ami_type = "AL2_x86_64"
+  # vpc name
   vpc_name = "jenkins-vpc"
+  # This VPC will always create CIDR blocks in the 10.X.0.0/16 range. This variable is the X in this equation.
+  vpc_cidr_b_block = 130
+
+  # jenkins related variables
   jenkins_admin_user = "admin"
   jenkins_admin_password = "Admin@123"
-  jenkins_port = 32080
+  jenkins_namespace_name = "jenkins"
+  # common tags to all resources
   tags = {
     "team"        = "delivery pipeline"
     "service"     = "demo-jenkins-k8s"

@@ -57,28 +57,6 @@ module "vpc" {
   # re-created
   reuse_nat_ips       = true
   external_nat_ip_ids = aws_eip.nat.*.id
-  # Manage default security group of the VPC to be able to enable incoming
-  # traffic from VPC CIDR
-  # manage_default_security_group = true
-  # default_security_group_ingress = [
-  #   {
-  #     self        = true,
-  #     description = "Enable all incoming traffic from self"
-  #     protocol    = "-1"
-  #   },
-  #   {
-  #     cidr_blocks = local.cidr
-  #     description = "Enable all incoming traffic from the VPC CIDR"
-  #     protocol    = "-1"
-  #   },
-  # ]
-  # default_security_group_egress = [
-  #   {
-  #     description = "Enable all outgoing traffic"
-  #     cidr_blocks = "0.0.0.0/0"
-  #     protocol    = "-1"
-  #   },
-  # ]
 
   tags = local.tags
 }

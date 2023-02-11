@@ -13,7 +13,7 @@ locals {
 
 inputs = {
   cidr_b_block = 130
-//   aws_region = local.common_vars.locals.region
   vpc_name = local.common_vars.locals.vpc_name
   tags = local.common_vars.locals.tags
+  cidr_b_block = local.common_vars.locals.vpc_cidr_b_block
 }

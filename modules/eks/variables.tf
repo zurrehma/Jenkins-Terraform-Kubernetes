@@ -40,27 +40,6 @@ variable "worker_group_instance_type" {
   default     = ["t3.medium"]
 }
 
-# Jenkins Ports
-variable "jenkins_from_port" {
-  default = 32080
-  type    = number
-}
-
-variable "jenkins_to_port" {
-  default = 32080
-  type    = number
-}
-
-variable "agent_from_port" {
-  default = 32081
-  type    = number
-}
-
-variable "agent_to_port" {
-  default = 32081
-  type    = number
-}
-
 variable "autoscaling_group_min_size" {
   type        = number
   description = "The minimum number of nodes the worker group can scale to."
@@ -79,9 +58,6 @@ variable "autoscaling_group_max_size" {
   default     = 3
 }
 
-variable "managed_node_group_sg_id" {
-  type = string
-}
 
 #------------------------------------------------------------------------------
 # tf-null-label variables

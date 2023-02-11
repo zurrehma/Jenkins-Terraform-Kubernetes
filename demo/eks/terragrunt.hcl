@@ -17,12 +17,13 @@ locals {
 
 inputs = {
   vpc_id = dependency.vpc.outputs.context.vpc_id
-  cluster_name = local.common_vars.locals.cluster_name
   subnets = dependency.vpc.outputs.context.private_subnets
-  jenkins_from_port = local.common_vars.locals.jenkins_port
-  jenkins_to_port = local.common_vars.locals.jenkins_port
-  agent_from_port = local.common_vars.locals.agent_port
-  agent_to_port = local.common_vars.locals.agent_port
-  managed_node_group_sg_id = dependency.vpc.outputs.context.default_security_group_id
+  cluster_name = local.common_vars.locals.eks_cluster_name
+  cluster_version = local.common_vars.locals.eks_cluster_version
+  autoscaling_group_max_size = local.common_vars.locals.eks_autoscaling_group_max_size
+  autoscaling_group_desired_capacity = local.common_vars.locals.eks_autoscaling_group_desired_capacity
+  autoscaling_group_min_size = local.common_vars.locals.eks_autoscaling_group_min_size
+  worker_group_instance_type = local.common_vars.locals.eks_worker_group_instance_type
+  ami_type = local.common_vars.locals.eks_worker_ami_type
   tags = local.common_vars.locals.tags
 }
