@@ -37,7 +37,7 @@ The demo directory contains the terragrunt files which will be used to create th
 | eks | contains terragrunt file to create eks resources |
 | jenkins | contains terragrunt file to create Jenkins resources |
 
-## Task: Set up a Jenkins master and worker configuration on a Kubernetes cluster of your choice. 
+## Set up a Jenkins master and worker configuration on EKS
 
 - [x] All configuration needs to be done with Terraform 
 - [x] The deployment needs to be fully automated 
@@ -46,7 +46,7 @@ The demo directory contains the terragrunt files which will be used to create th
 #### Recommendations
 * The cluster autoscaler or karpenter can be used to scale workers on load.
 * The taints and tolerations can be added so no worker pod is scheduled on the Jenkins controller instance.
-* The monitoring can be improved by adding observability tools such as Prometheus for metrics logs and ELK for logs
+* The monitoring can be improved by adding observability tools such as Prometheus for metrics and ELK for logs
 * The authentication can be integrated with IAM using IAM authenticator and using aws-auth configmap on EKS side.
 * The Kubernetes Service account permission to AWS services can be limited by using OIDC Provided URL by EKS with IAM.
 * The Jenkins storage persistence can be changed to efs type to fully utilize the autoscaling.
@@ -94,7 +94,7 @@ kubectl get svc -n jenkins
 The Jenkins username and password can be obtained from ***demo/common_vars.yaml*** file.
 
 
-## Task: Create a job and build it using this infrastructure. 
+## Create a job and build it using this infrastructure. 
 I have created a [jenkins-cicd-example](https://github.com/zurrehma/jenkins-cicd-example) repository on my GitHub account. It contains a basic ***Go*** app. The code and deployment files are compiled from different sources.
 
 > **Note**

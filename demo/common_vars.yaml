@@ -1,6 +1,6 @@
 locals {
   # aws account name e.g prod-jenkins
-  aws_account       = "demo-jenkins"
+  aws_account       = "test-jenkins"
   # eks related variables
   eks_cluster_name = "eks-cluster"
   eks_cluster_version = "1.22"

@@ -2,7 +2,7 @@
 # Root terragrunt config
 #------------------------------------------------------------------------------
 locals {
-  aws_account       = "demo-jenkins"
+  aws_account       = "test-jenkins"
   // default_yaml_path = find_in_parent_folders("empty.yaml")
   tags = {
     "team"        = "delivery pipeline"
